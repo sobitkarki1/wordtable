@@ -3,13 +3,13 @@ from collections import Counter
 import glob
 
 # Define constants
-NUM_WORDS = 10
+NUM_WORDS = 100
 INPUT_FILE_PATTERN = 'data/*.txt'
 OUTPUT_FILE_NAME = 'output.log'
 ENCODING = 'utf-8'
 
 # Download the necessary NLTK data files
-nltk.download('punkt')
+# nltk.download('punkt') # Do we require this everytime?
 
 # Initialize a Counter to hold word counts
 word_counts = Counter()
