@@ -4,7 +4,7 @@ import glob
 
 # Define constants
 NUM_WORDS = 10
-INPUT_FILE_PATTERN = '*.txt'
+INPUT_FILE_PATTERN = 'data/*.txt'
 OUTPUT_FILE_NAME = 'output.log'
 ENCODING = 'utf-8'
 
