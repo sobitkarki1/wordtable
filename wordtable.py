@@ -1,7 +1,12 @@
 import nltk
 from collections import Counter
-import os
 import glob
+
+# Define constants
+NUM_WORDS = 10
+INPUT_FILE_PATTERN = '*.txt'
+OUTPUT_FILE_NAME = 'output.log'
+ENCODING = 'utf-8'
 
 # Download the necessary NLTK data files
 nltk.download('punkt')
@@ -10,8 +15,8 @@ nltk.download('punkt')
 word_counts = Counter()
 
 # Process each text file in the current directory
-for filename in glob.glob('*.txt'):
-    with open(filename, 'r', encoding='utf-8') as file:
+for filename in glob.glob(INPUT_FILE_PATTERN):
+    with open(filename, 'r', encoding=ENCODING) as file:
         text = file.read()
         # Tokenize the text into words using NLTK
         words = nltk.word_tokenize(text.lower())
@@ -20,11 +25,11 @@ for filename in glob.glob('*.txt'):
         # Update the word counts
         word_counts.update(words)
 
-# Get the 10 most common words
-most_common_words = word_counts.most_common(10)
+# Get the most common words
+most_common_words = word_counts.most_common(NUM_WORDS)
 
 # Append the table to the output file
-with open('output.log', 'a', encoding='utf-8') as output_file:
+with open(OUTPUT_FILE_NAME, 'a', encoding=ENCODING) as output_file:
     output_file.write(f"{'Word':<15}{'Frequency':<10}\n")
     output_file.write('-' * 25 + '\n')
     for word, frequency in most_common_words:
